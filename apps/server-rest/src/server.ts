@@ -1,57 +1,19 @@
 import express from 'express'
 import cors from 'cors'
 import { v4 as uuidv4 } from 'uuid'
+import { App, Permission, Role, User } from './types'
+import { usersData, rolesData, permissionsData, appsData } from './mock-data'
+
+let users = usersData
+let roles = rolesData
+let permissions = permissionsData
+let apps = appsData
 
 const app = express()
 const port = 3001
 
 app.use(cors())
 app.use(express.json())
-
-// Types
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-}
-
-interface Role {
-  id: string
-  name: string
-}
-
-interface Permission {
-  id: string
-  name: string
-}
-
-interface App {
-  id: string
-  name: string
-}
-
-// Mock data
-let users: User[] = [
-  { id: uuidv4(), name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-  { id: uuidv4(), name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
-]
-
-let roles: Role[] = [
-  { id: uuidv4(), name: 'Admin' },
-  { id: uuidv4(), name: 'User' },
-]
-
-let permissions: Permission[] = [
-  { id: uuidv4(), name: 'Read' },
-  { id: uuidv4(), name: 'Write' },
-  { id: uuidv4(), name: 'Delete' },
-]
-
-let apps: App[] = [
-  { id: uuidv4(), name: 'Dashboard' },
-  { id: uuidv4(), name: 'Analytics' },
-]
 
 // Mock session storage
 let activeSessions: { [key: string]: string } = {}
