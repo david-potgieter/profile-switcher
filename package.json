@@ -1,7 +1,8 @@
 {
-  "name": "kartweel-studios",
+  "name": "profile-switcher",
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*"
   ]
 }
