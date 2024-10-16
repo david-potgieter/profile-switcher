@@ -1,0 +1,7 @@
+{
+  "name": "kartweel-studios",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
