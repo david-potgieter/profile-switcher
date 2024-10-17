@@ -1,1 +1,3 @@
-bun test
+echo "Running pre-commit hook"
+
+bun --filter="*server-rest*" ts-lint
