@@ -1,3 +1,16 @@
-echo "Running pre-commit hook"
+#!/bin/bash
+echo "⌛️ Running pre-commit hook"
 
-bun --filter="*server-rest*" ts-lint
+run_lint() {
+  local dir=$1
+  if [ -d "$dir" ]; then
+    echo "Script for $dir"
+    (bun --filter="./"$dir"*" ts-lint)
+  fi
+}
+
+for dir in packages/* apps/server-*; do
+  run_lint "$dir"
+done
+
+echo "🎯 Pre-commit hook done"
